@@ -24,13 +24,7 @@ def getSVMAcc():
     
     XTest = test[:,1:total_cols-1];
     YTest = test[:,total_cols-1];
-    
-    # print(XTrain)
-    # print(YTrain)
-    #   
-    # print(XTest)
-    # print(YTest)
-    
+     
     svmMulti = svm.SVC()
     svmMulti.fit(XTrain, YTrain)
     pred_Y = svmMulti.predict(XTest)

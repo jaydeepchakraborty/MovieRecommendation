@@ -8,7 +8,7 @@ from py_svm import getSVMAcc
 eng = matlab.engine.start_matlab()
 
 
-no_itr = 10
+no_itr = 100000
 
 avg_knn_accuracy = 0
 avg_nb_accuracy = 0
@@ -23,8 +23,6 @@ for x in range(1,no_itr):
         avg_knn_accuracy = avg_knn_accuracy + knn_accuracy
         
         nb_accuracy = getNBAcc()
-        print("Iter " + str(x) + " nb_acc: " + str(nb_accuracy))
-        print(nb_accuracy)
         avg_nb_accuracy = avg_nb_accuracy + nb_accuracy
         
         lr_accuracy = getLRAcc()

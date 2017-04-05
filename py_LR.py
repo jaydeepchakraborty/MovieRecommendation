@@ -29,17 +29,9 @@ def getLRAcc():
     XTest = test[:,1:total_cols-1];
     YTest = test[:,total_cols-1];
     
-    # print(XTrain)
-    # print(YTrain)
-    #   
-    # print(XTest)
-    # print(YTest)
-    
     lrMulti = LogisticRegression()
     lrMulti.fit(XTrain, YTrain)
     pred_Y = lrMulti.predict(XTest)
-    
-    print(pred_Y)
     
     error = numpy.sum(YTest != pred_Y);
     nb_accuracy = (float(total_rows - error) / total_rows) * 100;

@@ -27,20 +27,10 @@ def getKmeansAcc():
     XTest = test[:,1:total_cols-1];
     YTest = test[:,total_cols-1];
     
-    # print(XTrain)
-    # print(YTrain)
-    #   
-    # print(XTest)
-    # print(YTest)
-    
     km = KMeans(n_clusters=5, random_state=0).fit(XTrain)
     pred_Y = km.predict(XTest)
     x = [1 for i in range(size(XTest, 0))]
-    print(x)
-    print(pred_Y)
     pred_Y = numpy.add(x, pred_Y)
-    
-    print(pred_Y)
     
     error = numpy.sum(YTest != pred_Y);
     nb_accuracy = (float(total_rows - error) / total_rows) * 100;
