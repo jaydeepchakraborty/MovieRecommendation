@@ -1,6 +1,10 @@
+% SVM
+mNBayes()
+function nb_accuracy = mNBayes()
+
 clear all; clc;
 % load data
-data = load('text.csv');
+data = load('text_big.csv');
 data = data(2:size(data, 1),2:size(data, 2));
 [n_rows, n_cols] = size(data);
 
@@ -10,5 +14,18 @@ test_rows = int32(n_rows*.3);
 train_set = data(TrainIndices, :);
 test_set = data(TestIndices, :);
 
-mdl = fitcnb(train_set(:,1:n_cols-1), train_set(:,n_cols-1));
-mdl.predict(test_set(:,1:n_cols-1))
+XTrain = train_set(:,1:n_cols-1);
+YTrain = train_set(:,n_cols-1);
+
+XTest = test_set(:,1:n_cols-1);
+YTest = test_set(:,n_cols-1);
+
+% SVM Model training - check for CECOC
+Mdl = fitcnb(XTrain, YTrain);
+pred_output = predict(Mdl, XTest);
+
+disp(size(pred_output));
+
+error = sum(YTest ~= pred_output);
+nb_accuracy = (double(n_rows - error) / n_rows) * 100;
+end

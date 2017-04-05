@@ -43,3 +43,6 @@ for filename in glob.glob(os.path.join(path, '*.txt')):
         bulk.execute()
    
     print(filename)
+    
+    
+print("--------------DONE--------------")
