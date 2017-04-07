@@ -8,9 +8,7 @@ from sklearn.naive_bayes import GaussianNB
 from numpy import size
 # import pprint
 
-def getNBAcc():
-    my_data = numpy.genfromtxt('text_big.csv', delimiter=',')
-    my_data = numpy.delete(my_data, (0), axis=0)
+def getNBAcc(my_data):
     
     total_rows = numpy.size(my_data, 0)
     total_cols = numpy.size(my_data, 1)

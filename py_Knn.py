@@ -1,16 +1,10 @@
-#reverse
-
-import glob
-import os
-import random
 import numpy
-from sklearn import linear_model
-from numpy import size, ones
-from sklearn.cluster import KMeans
-# import pprint
+from sklearn import neighbors
 
-def getKmeansAcc(my_data):
 
+def getKnnAcc(my_data):
+
+    
     total_rows = numpy.size(my_data, 0)
     total_cols = numpy.size(my_data, 1)
     train_rows = int(total_rows * 0.7)
@@ -24,14 +18,12 @@ def getKmeansAcc(my_data):
     XTest = test[:,1:total_cols-1];
     YTest = test[:,total_cols-1];
     
-    km = KMeans(n_clusters=5, random_state=0).fit(XTrain)
-    pred_Y = km.predict(XTest)
-    x = [1 for i in range(size(XTest, 0))]
-    pred_Y = numpy.add(x, pred_Y)
+    knn = neighbors.KNeighborsClassifier()
+    knn.fit(XTrain, YTrain)
+    pred_Y = knn.predict(XTest)
     
     error = numpy.sum(YTest != pred_Y);
     nb_accuracy = (float(total_rows - error) / total_rows) * 100;
     
     return nb_accuracy
-
 

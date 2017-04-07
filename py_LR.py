@@ -11,11 +11,8 @@ from sklearn.linear_model.logistic import LogisticRegression
 # import pprint
 
 
-def getLRAcc():
+def getLRAcc(my_data):
 
-    my_data = numpy.genfromtxt('text_big.csv', delimiter=',')
-    my_data = numpy.delete(my_data, (0), axis=0)
-    
     total_rows = numpy.size(my_data, 0)
     total_cols = numpy.size(my_data, 1)
     train_rows = int(total_rows * 0.7)

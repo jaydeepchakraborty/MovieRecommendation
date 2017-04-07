@@ -8,10 +8,8 @@ from sklearn import svm
 from numpy import size
 # import pprint
 
-def getSVMAcc():
-    my_data = numpy.genfromtxt('text_big.csv', delimiter=',')
-    my_data = numpy.delete(my_data, (0), axis=0)
-    
+def getSVMAcc(my_data):
+     
     total_rows = numpy.size(my_data, 0)
     total_cols = numpy.size(my_data, 1)
     train_rows = int(total_rows * 0.7)
