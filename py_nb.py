@@ -8,11 +8,11 @@ from sklearn.naive_bayes import GaussianNB
 from numpy import size
 # import pprint
 
-def getNBAcc(my_data):
+def getNBAcc(my_data,train_ratio):
     
     total_rows = numpy.size(my_data, 0)
     total_cols = numpy.size(my_data, 1)
-    train_rows = int(total_rows * 0.7)
+    train_rows = int(total_rows * train_ratio)
     
     numpy.random.shuffle(my_data)
     training, test = my_data[:train_rows,:], my_data[train_rows:,:]

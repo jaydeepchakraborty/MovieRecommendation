@@ -18,6 +18,9 @@ avg_nb_accuracy = 0
 avg_lr_accuracy = 0
 avg_kmeans_accuracy = 0
 avg_svm_accuracy = 0
+
+train_ratio = .6
+
 for x in range(1,no_itr):
     try:
         print("Iteration Number:-"+str(x))
@@ -26,21 +29,18 @@ for x in range(1,no_itr):
         my_data = numpy.genfromtxt('text_big.csv', delimiter=',')
         my_data = numpy.delete(my_data, (0), axis=0)
        
-        knn_accuracy  = getKnnAcc(my_data)
-        avg_knn_accuracy = avg_knn_accuracy + knn_accuracy
+        knn_accuracy  = getKnnAcc(my_data,train_ratio)
+        nb_accuracy = getNBAcc(my_data,train_ratio)
+        lr_accuracy = getLRAcc(my_data,train_ratio)
+        kmeans_accuracy = getKmeansAcc(my_data,train_ratio)
+        svm_accuracy = getSVMAcc(my_data,train_ratio)
         
-        nb_accuracy = getNBAcc(my_data)
+        
         avg_nb_accuracy = avg_nb_accuracy + nb_accuracy
-        
-        lr_accuracy = getLRAcc(my_data)
+        avg_knn_accuracy = avg_knn_accuracy + knn_accuracy
         avg_lr_accuracy = avg_lr_accuracy + lr_accuracy
-        
-        kmeans_accuracy = getKmeansAcc(my_data)
         avg_kmeans_accuracy = avg_kmeans_accuracy + kmeans_accuracy
-        
-        svm_accuracy = getSVMAcc(my_data)
         avg_svm_accuracy = avg_svm_accuracy + svm_accuracy
-        
         actual_itr = actual_itr + 1
     except:
         traceback.print_exc()

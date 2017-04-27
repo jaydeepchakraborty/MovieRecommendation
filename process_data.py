@@ -4,6 +4,7 @@ import glob
 import os
 # import pprint
 from pymongo import MongoClient
+from IPython.utils.py3compat import execfile
 client = MongoClient()
 db = client.movie_database
 ratingsCollection = db.ratings_collection
@@ -43,6 +44,8 @@ for filename in glob.glob(os.path.join(path, '*.txt')):
         bulk.execute()
    
     print(filename)
-    
+
+print("------------Calling Accuracy File--------------")
+execfile('calculate_accuracy_item_item.py')  
     
 print("--------------DONE--------------")

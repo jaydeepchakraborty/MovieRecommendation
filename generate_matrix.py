@@ -45,7 +45,7 @@ def getRandomData():
         userObj = db.ratingsCollection.find().limit(-1).skip(randomIndex).next()
 #         userObj = db.ratingsCollection.find({"userid": "1192830"})[0]
         print(len(userObj["ratings"]))
-        if len(userObj["ratings"]) > 1:
+        if len(userObj["ratings"]) > 10:
             break
     print(userObj)
     
